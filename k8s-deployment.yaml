@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calc-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calc
+  template:
+    metadata:
+      labels:
+        app: calc
+    spec:
+      containers:
+      - name: calc-container
+        image: yourdockerhubusername/calc-app
+        imagePullPolicy: Always
+        command: ["python"]
+        args: ["test_calc.py"]
